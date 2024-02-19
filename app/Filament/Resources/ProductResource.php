@@ -23,7 +23,7 @@ class ProductResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->label('Name')
-                    ->required(),
+                    ->unique(ignoreRecord: true),
                 TextInput::make('price'),
             ]);
     }
