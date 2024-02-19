@@ -37,7 +37,9 @@ class ProductResource extends Resource
                     ->searchable(isIndividual: true, isGlobal: false),
                 Tables\Columns\TextColumn::make('price')
                     ->sortable()
-                    ->searchable(isIndividual: true, isGlobal: false),
+                    ->searchable(isIndividual: true, isGlobal: false)
+                    ->money('euro')
+                    ->getStateUsing(fn(Product $product) => $product->price / 100),
             ])
             ->filters([
                 //
